@@ -133,6 +133,31 @@ class Texts extends React.Component {
         const { classes } = this.props;
         return (
             <div>
+                {Object.keys(this.state.texts).map(id => {
+                    const text = this.state.texts[id];
+                    return (
+                        <Card key={id}>
+                            <CardContent>
+                                <Typography color="textSecondary" gutterBottom>
+                                    content: {text.textContent.substring(0, 24) + "..."}
+                                </Typography>
+                                <Grid container>
+                                    <Grid item xs={6}>
+                                        {text.textName.substring(0, 14) + "..."}
+                                    </Grid>
+                                    <Grid item xs={3}>
+                                        <Link component={RouterLink} to={"detail/" + id} >
+                                            <Button variant="contained" color="primary" >See</Button>
+                                        </Link>
+                                    </Grid>
+                                    <Grid item xs={3}>
+                                        <Button variant="contained" color="primary" onClick={() => this.handleDelete(id)}>Delete</Button>
+                                    </Grid>
+                                </Grid>
+                            </CardContent>
+                        </Card>
+                    )
+                })}
                 <Fab color="primary" className={classes.fab} onClick={this.handleDialogToggle}>
                     <AddIcon />
                 </Fab>
