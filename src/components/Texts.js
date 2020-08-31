@@ -15,16 +15,17 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
+import '../index.css';
 
 const styles = theme => ({
-hidden: {
-display: 'none'
-},
-fab: {
-position: 'fixed',
-bottom: '20px',
-right: '20px'
-},
+    hidden: {
+        display: 'none'
+    },
+    fab: {
+        position: 'fixed',
+        bottom: '20px',
+        right: '20px'
+    },
 });
 
 const databaseURL = "https://wordcloud-359a4.firebaseio.com/";
