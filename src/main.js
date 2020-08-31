@@ -1,5 +1,14 @@
 import React from "react";
 import ReactDom from "react-dom";
 import App from "./components/App";
+import './index.css';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-ReactDom.render(<App />, document.getElementById("app"));
+const theme = createMuiTheme({
+    typography: {
+        useNextVariants: true,
+        fontFamily: "Noto Sans KR"
+    }
+});
+
+ReactDom.render(<MuiThemeProvider theme={theme}><App/></MuiThemeProvider>, document.getElementById("app"));
