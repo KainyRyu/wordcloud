@@ -1,10 +1,9 @@
-import React, { Component } from 'react'
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
+import React from 'react';
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
 import '../index.css';
 
-
-export default class Detail extends Component {
+class Detail extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -13,8 +12,10 @@ export default class Detail extends Component {
             <Card>
                 <CardContent>
                     {this.props.match.params.textID}
-                </CardContent>                
+                </CardContent>
             </Card>
-        )
+        );
     }
 }
+
+export default Detail;

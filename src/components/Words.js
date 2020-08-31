@@ -30,20 +30,20 @@ class Words extends React.Component {
         this.state = {
             words: {},
             dialog: false,
-            word: "",
-            weight: "",
+            word: '',
+            weight: '',
         };
     }
 
     _get() {
         fetch(`${databaseURL}/words.json`)
-            .then((res) => {
-                if (res.status != 200) {
-                    throw new Error(res.statusText);
-                }
-                return res.json();
-            })
-            .then((words) => this.setState({ words: words }));
+        .then((res) => {
+            if (res.status != 200) {
+                throw new Error(res.statusText);
+            }
+            return res.json();
+        })
+        .then((words) => this.setState({ words: words }));
     }
 
     _post(word) {
