@@ -17,14 +17,14 @@ import { Link as RouterLink } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 
 const styles = theme => ({
-hidden: {
-display: 'none'
-},
-fab: {
-position: 'fixed',
-bottom: '20px',
-right: '20px'
-},
+    hidden: {
+        display: 'none'
+    },
+    fab: {
+        position: 'fixed',
+        bottom: '20px',
+        right: '20px'
+    },
 });
 
 const databaseURL = "https://wordcloud-359a4.firebaseio.com/";
@@ -118,9 +118,9 @@ class Texts extends React.Component {
     handleFileChange = (e) => {
         let reader = new FileReader();
         reader.onload = () => {
-        let text = reader.result;
-        this.setState({
-        fileContent: text
+            let text = reader.result;
+            this.setState({
+            fileContent: text
         })
         }
         reader.readAsText(e.target.files[0]);
@@ -133,6 +133,35 @@ class Texts extends React.Component {
         const { classes } = this.props;
         return (
             <div>
+                {Object.keys(this.state.texts).map(id => {
+                    const text = this.state.texts[id];
+                    return (
+                        <Card key={id}>
+                            <CardContent>
+                                <Typography color="textSecondary" gutterBottom>
+                                    Content: {text.textContent}
+                                </Typography>
+                                <Grid container>
+                                    <Grid item xs={6}>
+                                        <Typography color="textSecondary" gutterBottom>
+                                            {text.textName}
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item xs={3}>
+                                        <Typography variant="h5" component="h2">
+                                            <Link component={RouterLink} to={"detail/"+id}>
+                                                <Button variant="contained" color="primary">View</Button>
+                                            </Link>
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item xs={3}>
+                                        <Button variant="contained" color="primary" onClick={() => this.handleDelete(id)}>Delete</Button>
+                                    </Grid>
+                                </Grid>
+                            </CardContent>
+                        </Card>
+                    )
+                })}
                 <Fab color="primary" className={classes.fab} onClick={this.handleDialogToggle}>
                     <AddIcon />
                 </Fab>
